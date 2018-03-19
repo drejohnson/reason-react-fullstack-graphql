@@ -1,0 +1,31 @@
+{
+  "name": "reasonreact-fullstack",
+  "version": "0.1.0",
+  "sources": [{
+    "dir": "src",
+    "subdirs": true
+  }],
+  "package-specs": [{
+    "module": "es6",
+    "in-source": true
+  }],
+  "suffix": ".bs.js",
+  "bs-dependencies": [
+    "reason-react",
+    "reason-apollo",
+    "reason-react-context",
+    "reason-reroute",
+    "bs-css",
+    "bs-dynamic-import",
+    "reason-loadable"
+  ],
+  "namespace": true,
+  "refmt": 3,
+  "reason": {
+    "react-jsx": 2
+  },
+  "bsc-flags": [
+    "-bs-super-errors"
+  ],
+  "ppx-flags": ["graphql_ppx/ppx"]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "reason-graphql-fullstack",
+  "version": "0.1.0",
+  "sources": [{
+    "dir": "src",
+    "subdirs": true
+  }],
+  "package-specs": [{
+    "module": "commonjs",
+    "in-source": true
+  }],
+  "suffix": ".bs.js",
+  "bs-dependencies": [],
+  "namespace": true,
+  "refmt": 3,
+  "reason": {
+    "react-jsx": 2
+  }
+}

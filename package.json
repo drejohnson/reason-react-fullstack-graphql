@@ -1,0 +1,51 @@
+{
+  "name": "reasonreact-fullstack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "serve -s dist",
+    "dev": "concurrently \"bsb -make-world -w\" \"NODE_ENV=development webpack-serve ./webpack.config.js\"",
+    "prebuild": "npm run clean:dist",
+    "build": "bsb -make-world && webpack --mode production",
+    "postbuild": "npm run copy:public ",
+    "copy:public": "node tools/copy.js",
+    "clean:dist": "node tools/clean.js",
+    "deploy:now": "now --public dist",
+    "get-schema": "yarn send-introspection-query http://localhost:4000/"
+  },
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.1.11",
+    "apollo-client": "^2.2.7",
+    "apollo-link": "^1.2.1",
+    "apollo-link-context": "^1.0.7",
+    "apollo-link-error": "^1.0.7",
+    "apollo-link-http": "^1.5.3",
+    "bs-css": "^6.5.0",
+    "bs-dynamic-import": "^0.1.0",
+    "express": "^4.16.3",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.8.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-helmet": "^5.2.0",
+    "react-hot-loader": "^4.0.0",
+    "reason-apollo": "^0.6.18",
+    "reason-loadable": "^0.3.0",
+    "reason-react": "^0.3.4",
+    "reason-react-context": "^0.1.0",
+    "reason-reroute": "^0.0.4"
+  },
+  "devDependencies": {
+    "bs-platform": "^2.2.3",
+    "concurrently": "^3.5.1",
+    "connect-history-api-fallback": "^1.5.0",
+    "fs-extra": "^5.0.0",
+    "graphql_ppx": "^0.2.1",
+    "html-webpack-plugin": "^3.0.7",
+    "koa-connect": "^2.0.1",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-serve": "^0.2.0"
+  }
+}
