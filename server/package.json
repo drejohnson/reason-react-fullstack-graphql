@@ -7,6 +7,7 @@
     "prisma": "prisma"
   },
   "dependencies": {
+    "bs-express": "^0.6.0",
     "dotenv": "^5.0.1",
     "graphql-yoga": "1.6.1",
     "prisma-binding": "1.5.16"
