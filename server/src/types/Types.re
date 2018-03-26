@@ -2,6 +2,8 @@ type t;
 
 type schema;
 
+type connection;
+
 type db;
 
 type request;
@@ -9,12 +11,6 @@ type request;
 type parent;
 
 type info;
-
-type context = {
-  .
-  "db": db,
-  "request": request,
-};
 
 type resolvers = {
   .

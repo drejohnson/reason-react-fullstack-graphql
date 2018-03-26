@@ -1,27 +1,32 @@
-open Types;
+type fragmentReplacements;
 
-type serverOptions = {
+type prismaProps = {
   .
+  "fragmentReplacements": Js.Nullable.t(fragmentReplacements),
   "typeDefs": Js.Nullable.t(string),
-  "resolvers": Js.Nullable.t(resolvers),
-  "schema": Js.Nullable.t(schema),
-  "context": Js.Nullable.t(context),
+  "endpoint": Js.Nullable.t(string),
+  "secret": Js.Nullable.t(string),
+  "debug": Js.Nullable.t(Js.boolean),
 };
 
-[@bs.module "graphql-yoga"] [@bs.new]
-external makeGraphQLServer : serverOptions => 'a = "GraphQLServer";
+[@bs.module "prisma-binding"] [@bs.new]
+external makePrisma : prismaProps => 'a = "Prisma";
 
-[@bs.send.pipe: 'a] external start : 'a => 'a = "";
-
-let createGraphQLServer =
-    (~typeDefs=?, ~resolvers=?, ~schema=?, ~context=?, ()) => {
-  let graphQLServerOptions = {
+let createPrisma =
+    (
+      ~fragmentReplacements=?,
+      ~typeDefs=?,
+      ~endpoint=?,
+      ~secret=?,
+      ~debug=?,
+      (),
+    ) => {
+  let prismaOptions = {
+    "fragmentReplacements": Js.Nullable.fromOption(fragmentReplacements),
     "typeDefs": Js.Nullable.fromOption(typeDefs),
-    "resolvers": Js.Nullable.fromOption(resolvers),
-    "schema": Js.Nullable.fromOption(schema),
-    "context": Js.Nullable.fromOption(context),
+    "endpoint": Js.Nullable.fromOption(endpoint),
+    "secret": Js.Nullable.fromOption(secret),
+    "debug": Js.Nullable.fromOption(debug),
   };
-  makeGraphQLServer(graphQLServerOptions);
+  makePrisma(prismaOptions);
 };
-
-let graphQLServer = createGraphQLServer(~typeDefs="./src/schema.graphql", ());

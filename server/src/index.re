@@ -16,7 +16,9 @@ let resolvers: resolvers = {
   },
 };
 
-let server = Prisma.createGraphQLServer(~typeDefs, ~resolvers, ());
+let server = GraphqlYoga.createGraphQLServer(~typeDefs, ~resolvers, ());
 
 server
-|> Prisma.start(() => Js.log("Server is running on http://localhost:4000"));
+|> GraphqlYoga.start(() =>
+     Js.log("Server is running on http://localhost:4000")
+   );
