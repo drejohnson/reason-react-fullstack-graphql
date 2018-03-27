@@ -1,11 +1,5 @@
 open Types;
 
-let resolvers: resolvers = {
-  "Query": {
-    "hello": Query.hello,
-  },
-};
-
 let server =
   GraphqlYoga.createGraphQLServer(
     ~typeDefs="./src/schema.graphql",
