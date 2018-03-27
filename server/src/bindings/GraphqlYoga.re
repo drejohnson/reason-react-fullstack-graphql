@@ -1,5 +1,7 @@
 open Types;
 
+type schema;
+
 type contextParameters = {
   request: Express.Request.t,
   connection,
@@ -13,7 +15,8 @@ type contextObj = {
 
 type contextCallback = contextParameters => contextObj;
 
-/* type context = [@bs.unwrap] [ | `Obj(contextObj) | `Fn(contextCallback)]; */
+type context = [@bs.unwrap] [ | `Obj(contextObj) | `Fn(contextCallback)];
+
 type serverProps = {
   .
   "typeDefs": Js.Nullable.t(string),
