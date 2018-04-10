@@ -47,7 +47,7 @@ let make = _children => {
         <link rel="shortcut icon" href="/favicon.ico" />
       </ReactHelmet>
       <Layout>
-        <Routes.Container>
+        <Router.Container>
           ...(
                (~currentRoute) =>
                  switch (currentRoute) {
@@ -56,7 +56,7 @@ let make = _children => {
                  | _ => <NotFound />
                  }
              )
-        </Routes.Container>
+        </Router.Container>
       </Layout>
     </Fragment>,
 };
