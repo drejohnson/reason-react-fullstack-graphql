@@ -1157,13 +1157,17 @@ bs-css@^6.5.0:
   dependencies:
     glamor "^2.0.0"
 
-bs-dynamic-import@0.1.0, bs-dynamic-import@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/bs-dynamic-import/-/bs-dynamic-import-0.1.0.tgz#043fce42bad95d2dabef5aeff56ec9a982b0c3f2"
+bs-dynamic-import@0.3.0, bs-dynamic-import@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/bs-dynamic-import/-/bs-dynamic-import-0.3.0.tgz#538f6452774ffaf67471511ec971cc6b9ccb2ca0"
 
 bs-platform@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-2.2.3.tgz#d905ae10a5f3621e6a739041dfa0b58483a2174f"
+
+"bs-react-apollo@https://github.com/zenlist/bs-react-apollo.git#develop":
+  version "0.1.0"
+  resolved "https://github.com/zenlist/bs-react-apollo.git#5740eb11004bb0b8cb9501a48bd0858ab11077ec"
 
 buffer-xor@^1.0.3:
   version "1.0.3"
@@ -3668,7 +3672,7 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.1:
+lodash@4.17.5, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.1:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
@@ -4683,9 +4687,28 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@16.2.0, "react-dom@>=15.0.0 || >=16.0.0", react-dom@^16.2.0:
+react-apollo@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.1.3.tgz#5eb02cdf18cc4bdeb615bda94baedb50354e94e5"
+  dependencies:
+    fbjs "^0.8.16"
+    hoist-non-react-statics "^2.5.0"
+    invariant "^2.2.2"
+    lodash "4.17.5"
+    prop-types "^15.6.0"
+
+react-dom@16.2.0, "react-dom@>=15.0.0 || >=16.0.0":
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.2.0.tgz#69003178601c0ca19b709b33a83369fe6124c044"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+
+react-dom@^16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.1.tgz#6a3c90a4fb62f915bdbcf6204422d93a7d4ca573"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -4718,9 +4741,18 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react@16.2.0, "react@>=15.0.0 || >=16.0.0", react@^16.2.0:
+react@16.2.0, "react@>=15.0.0 || >=16.0.0":
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+
+react@^16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.3.1.tgz#4a2da433d471251c69b6033ada30e2ed1202cfd8"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -4785,22 +4817,16 @@ reason-apollo@^0.6.18:
   dependencies:
     fbjs "^0.8.16"
 
-reason-loadable@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/reason-loadable/-/reason-loadable-0.3.0.tgz#dbdd7da3d8a0c5564d3c505bb2184e5c6e6e1585"
+reason-loadable@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/reason-loadable/-/reason-loadable-0.4.0.tgz#83d19a619a4fea5db5659135e7d2d17a97a2c992"
   dependencies:
-    bs-dynamic-import "0.1.0"
+    bs-dynamic-import "0.3.0"
     react "16.2.0"
     react-dom "16.2.0"
     reason-react "0.3.4"
 
-reason-react-context@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/reason-react-context/-/reason-react-context-0.1.0.tgz#02aff7779ef3a9f3f7fa1d236c0b47457e4fb757"
-  dependencies:
-    reason-react "^0.3.2"
-
-reason-react@0.3.4, reason-react@^0.3.2, reason-react@^0.3.4:
+reason-react@0.3.4, reason-react@^0.3.4:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.3.4.tgz#afec4073ec0ea8122833f52b7e77219ef8ab8467"
   dependencies:
