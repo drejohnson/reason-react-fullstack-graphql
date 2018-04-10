@@ -6,7 +6,7 @@ module HelloQuery = [%graphql
 |}
 ];
 
-module Query = Apollo.Client.Query;
+module Query = ReactApollo.CreateQuery(HelloQuery);
 
 let styles =
   Css.(
@@ -30,18 +30,18 @@ let make = (~name, _children) => {
     let helloQuery = HelloQuery.make(~name, ());
     <Fragment>
       <div className=(Css.style(styles##hello))>
-        <Query query=helloQuery>
+        <Query variables=helloQuery##variables>
           ...(
-               (response, parse) =>
-                 switch (response) {
+               ({data}) =>
+                 switch (data) {
+                 | NoData => "No Data" |> Utils.text
+                 | Error(_) => "Something Went Wrong" |> Utils.text
                  | Loading => <Placeholder />
-                 | Failed(error) => <div> (error |> Utils.text) </div>
-                 | Loaded(result) =>
-                   let hello = parse(result)##hello;
-                   switch (hello) {
-                   | Some(n) => <h1> (n |> Utils.text) </h1>
+                 | Data(result) =>
+                   switch (result##hello) {
                    | None => <h1> ("Hello World" |> Utils.text) </h1>
-                   };
+                   | Some(name) => <h1> (name |> Utils.text) </h1>
+                   }
                  }
              )
         </Query>
