@@ -1,15 +1,8 @@
-module Component =
-  ReLoadable.Create(
-    {
-      module type t = ImportableHello.t;
-    },
-  );
+module Config = {
+  module type t = (module type of Hello);
+};
 
-let make = (~name, _children) =>
-  Component.make(
-    ~fetch=() => DynamicImport.import("./ImportableHello.bs"),
-    ~onLoading=() => <Placeholder />,
-    ~onFail=err => <div> (err |> Utils.text) </div>,
-    ~render=((module LoadedComponent)) => <LoadedComponent name />,
-    [||],
-  );
+module Loadable = ReLoadable.WithRender(Config);
+
+let make = _children =>
+  Loadable.make(~fetch=() => DynamicImport.import("./Hello.bs.js"), [||]);

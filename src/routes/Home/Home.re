@@ -13,7 +13,7 @@ let make = _children => {
       </ReactHelmet>
       <section>
         <ContentHeader section="ReasonReact" title="Fullstack Example" />
-        <Hello name="John Snow" />
+        <LazyHello render=(((module Hello)) => <Hello name="John Snow" />) />
       </section>
     </Fragment>,
 };

@@ -1,15 +1,5 @@
-module Component =
-  ReLoadable.Create(
-    {
-      module type t = ImportableNotFound.t;
-    },
-  );
+module Config = {
+  module type t = (module type of NotFound);
+};
 
-let make = _children =>
-  Component.make(
-    ~fetch=() => DynamicImport.import("./ImportableNotFound.bs"),
-    ~onLoading=() => <Placeholder />,
-    ~onFail=err => <div> (err |> Utils.text) </div>,
-    ~render=((module LoadedComponent)) => <LoadedComponent />,
-    [||],
-  );
+include ReLoadable.WithRender(Config);
