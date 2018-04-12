@@ -2,9 +2,7 @@
   "name": "reason-graphql-fullstack",
   "scripts": {
     "start": "node src/index.bs.js",
-    "playground": "prisma playground",
-    "dev": "npm-run-all --parallel start playground",
-    "prisma": "prisma"
+    "bsb": "bsb -make-world"
   },
   "dependencies": {
     "bs-express": "^0.6.0",
