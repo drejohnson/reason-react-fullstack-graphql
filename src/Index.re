@@ -1,5 +1,3 @@
-open ReactApollo;
-
 Css.(
   global("html", [backgroundColor(hex("262728")), minHeight(vh(100.))]),
   global("body", [backgroundColor(hex("262728")), color(hex("aaabac"))]),
@@ -23,7 +21,12 @@ module AppContainer = {
     );
 };
 
-ReactDOMRe.renderToElementWithId(<ApolloProvider client=Apollo.client> <App /> </ApolloProvider>, "root");
+ReactDOMRe.renderToElementWithId(
+  <ReasonApollo.Provider client=Apollo.client>
+    <App />
+  </ReasonApollo.Provider>,
+  "root",
+);
 
 [@bs.val] external hot : bool = "module.hot";
 

@@ -17,7 +17,7 @@
   "bs-dependencies": [
     "reason-react",
     "reason-reroute",
-    "bs-react-apollo",
+    "reason-apollo",
     "bs-css",
     "bs-dynamic-import",
     "reason-loadable"

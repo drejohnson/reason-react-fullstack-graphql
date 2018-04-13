@@ -15,7 +15,7 @@ let inMemoryCache =
 let httpLink = ApolloLinks.createHttpLink(~uri="http://localhost:4000/", ());
 
 let client =
-  ApolloClient.createApolloClient({
+  ReasonApollo.createApolloClient({
     "link": httpLink,
     "cache": inMemoryCache,
     "ssrMode": Js.Nullable.undefined,

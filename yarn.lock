@@ -1165,10 +1165,6 @@ bs-platform@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-2.2.3.tgz#d905ae10a5f3621e6a739041dfa0b58483a2174f"
 
-"bs-react-apollo@https://github.com/zenlist/bs-react-apollo.git#develop":
-  version "0.1.0"
-  resolved "https://github.com/zenlist/bs-react-apollo.git#5740eb11004bb0b8cb9501a48bd0858ab11077ec"
-
 buffer-xor@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/buffer-xor/-/buffer-xor-1.0.3.tgz#26e61ed1422fb70dd42e6e36729ed51d855fe8d9"
@@ -4815,11 +4811,9 @@ readdirp@^2.0.0:
     readable-stream "^2.0.2"
     set-immediate-shim "^1.0.1"
 
-reason-apollo@^0.6.18:
-  version "0.6.18"
-  resolved "https://registry.yarnpkg.com/reason-apollo/-/reason-apollo-0.6.18.tgz#734d5c799127dedd28af9e76c209c8a991300851"
-  dependencies:
-    fbjs "^0.8.16"
+"reason-apollo@https://github.com/apollographql/reason-apollo.git#feature/react-apollo-2.1":
+  version "0.6.20"
+  resolved "https://github.com/apollographql/reason-apollo.git#e28ede215b44d40d1186bc4496126d383d7c34d3"
 
 reason-loadable@^0.4.0:
   version "0.4.0"

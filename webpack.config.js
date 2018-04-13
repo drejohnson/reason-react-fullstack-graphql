@@ -1,11 +1,11 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const history = require('connect-history-api-fallback')
-const convert = require('koa-connect')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const history = require('connect-history-api-fallback');
+const convert = require('koa-connect');
 
-const env = process.env.NODE_ENV
-const isDev = env === 'development'
-const isProd = env === 'production'
+const env = process.env.NODE_ENV;
+const isDev = env === 'development';
+const isProd = env === 'production';
 
 module.exports = {
   mode: env || 'development',
@@ -31,19 +31,18 @@ module.exports = {
     })
   ],
   optimization: { splitChunks: { chunks: 'all', name: 'vendor' } }
-}
+};
 
 if (env === 'development') {
   module.exports.serve = {
     content: [__dirname],
     port: 8888,
-    open: true,
     add: (app, middleware, options) => {
       const historyOptions = {
         // ... see: https://github.com/bripkens/connect-history-api-fallback#options
-      }
+      };
 
-      app.use(convert(history(historyOptions)))
+      app.use(convert(history(historyOptions)));
     }
-  }
+  };
 }

@@ -6,7 +6,7 @@ module HelloQuery = [%graphql
 |}
 ];
 
-module Query = ReactApollo.CreateQuery(HelloQuery);
+module Query = ReasonApollo.CreateQuery(HelloQuery);
 
 let styles =
   Css.(

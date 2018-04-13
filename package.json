@@ -24,7 +24,6 @@
     "apollo-link-http": "^1.5.3",
     "bs-css": "^6.5.0",
     "bs-dynamic-import": "^0.3.0",
-    "bs-react-apollo": "https://github.com/zenlist/bs-react-apollo.git#develop",
     "express": "^4.16.3",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.8.0",
@@ -33,7 +32,8 @@
     "react-dom": "^16.3.1",
     "react-helmet": "^5.2.0",
     "react-hot-loader": "^4.0.0",
-    "reason-apollo": "^0.6.18",
+    "reason-apollo":
+      "https://github.com/apollographql/reason-apollo.git#feature/react-apollo-2.1",
     "reason-loadable": "^0.4.0",
     "reason-react": "^0.3.4",
     "reason-reroute": "^0.0.4"
