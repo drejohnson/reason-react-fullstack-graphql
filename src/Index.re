@@ -1,3 +1,6 @@
+[@bs.module "./registerServiceWorker"]
+external registerServiceWorker : unit => unit = "default";
+
 Css.(
   global("html", [backgroundColor(hex("262728")), minHeight(vh(100.))]),
   global("body", [backgroundColor(hex("262728")), color(hex("aaabac"))]),
@@ -27,6 +30,8 @@ ReactDOMRe.renderToElementWithId(
   </ReasonApollo.Provider>,
   "root",
 );
+
+registerServiceWorker();
 
 [@bs.val] external hot : bool = "module.hot";
 
