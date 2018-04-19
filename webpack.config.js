@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const WebpackBar = require('webpackbar');
 
 const env = process.env.NODE_ENV;
 const isDev = env === 'development';
@@ -25,6 +27,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new WebpackBar(),
     new HtmlWebpackPlugin({
       title: 'Webpack ReasonML',
       inject: true,
@@ -68,9 +71,27 @@ module.exports = {
           }
         }
       ]
-    })
+    }),
+    ...(!isDev ? [new BundleAnalyzerPlugin()] : [])
   ],
-  optimization: { splitChunks: { chunks: 'all', name: 'vendor' } }
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /node_modules/,
+          chunks: 'initial',
+          name: 'vendor',
+          priority: 10,
+          enforce: true
+        }
+      }
+    }
+  },
+  stats: {
+    colors: true,
+    reasons: isDev,
+    timings: true
+  }
 };
 
 if (env === 'development') {
