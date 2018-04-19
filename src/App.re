@@ -51,9 +51,9 @@ let make = _children => {
           ...(
                (~currentRoute) =>
                  switch (currentRoute) {
-                 | Home => <Home />
-                 | About => <About />
-                 | _ => <NotFound />
+                 | Home => <LazyHome />
+                 | About => <LazyAbout />
+                 | _ => <LazyNotFound />
                  }
              )
         </Router.Container>
