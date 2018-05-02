@@ -43,8 +43,7 @@ let make =
     "base": Js.Nullable.fromOption(base),
     "bodyAttributes": Js.Nullable.fromOption(bodyAttributes),
     "defaultTitle": Js.Nullable.fromOption(defaultTitle),
-    "encodeSpecialCharacters":
-      Js.Boolean.to_js_boolean(encodeSpecialCharacters),
+    "encodeSpecialCharacters": encodeSpecialCharacters,
     "htmlAttributes": Js.Nullable.fromOption(htmlAttributes),
     "link": Js.Nullable.fromOption(link),
     "meta": Js.Nullable.fromOption(meta),
