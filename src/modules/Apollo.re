@@ -15,11 +15,4 @@ let inMemoryCache =
 let httpLink = ApolloLinks.createHttpLink(~uri="http://localhost:4000/", ());
 
 let client =
-  ReasonApollo.createApolloClient({
-    "link": httpLink,
-    "cache": inMemoryCache,
-    "ssrMode": Js.Nullable.undefined,
-    "ssrForceFetchDelay": Js.Nullable.undefined,
-    "connectToDevTools": Js.Nullable.undefined,
-    "queryDeduplication": Js.Nullable.undefined,
-  });
+  ReasonApollo.createApolloClient(~link=httpLink, ~cache=inMemoryCache, ());
