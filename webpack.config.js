@@ -6,25 +6,15 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackBar = require('webpackbar');
 
-const env = process.env.NODE_ENV;
-const isDev = env === 'development';
-const isProd = env === 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  mode: env || 'development',
+  mode: isProd ? 'production' : 'development',
   entry: './src/Index.bs',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: isDev ? '[name].js' : '[name].[chunkhash:8].js',
+    filename: !isProd ? '[name].js' : '[name].[chunkhash:8].js',
     publicPath: '/'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.svg$/,
-        loader: 'svg-sprite-loader'
-      }
-    ]
   },
   plugins: [
     new WebpackBar(),
@@ -72,7 +62,7 @@ module.exports = {
         }
       ]
     }),
-    ...(!isDev ? [new BundleAnalyzerPlugin()] : [])
+    ...(isProd ? [new BundleAnalyzerPlugin()] : [])
   ],
   optimization: {
     splitChunks: {
@@ -89,12 +79,12 @@ module.exports = {
   },
   stats: {
     colors: true,
-    reasons: isDev,
+    reasons: isProd,
     timings: true
   }
 };
 
-if (env === 'development') {
+if (!isProd) {
   module.exports.serve = {
     content: [__dirname],
     port: 8888,

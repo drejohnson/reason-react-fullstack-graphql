@@ -6,9 +6,9 @@
   "scripts": {
     "start": "serve -s dist",
     "dev":
-      "concurrently \"bsb -make-world -w\" \"NODE_ENV=development webpack-serve ./webpack.config.js\"",
+      "concurrently \"bsb -make-world -w\" \"webpack-serve ./webpack.config.js\"",
     "prebuild": "npm run clean:dist",
-    "build": "bsb -make-world && webpack --mode production",
+    "build": "bsb -make-world && NODE_ENV=production webpack",
     "postbuild": "npm run copy:public ",
     "copy:public": "node tools/copy.js",
     "clean:dist": "node tools/clean.js",
