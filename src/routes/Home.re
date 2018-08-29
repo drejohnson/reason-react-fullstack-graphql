@@ -1,11 +1,11 @@
-let component = ReasonReact.statelessComponent("NotFound");
+let component = ReasonReact.statelessComponent("Home");
 
 let make = _children => {
   ...component,
   render: _self =>
-    <Fragment>
+    <>
       <ReactHelmet>
-        <title> ("404 - Page Not Found" |> Utils.text) </title>
+        <title> {"ReasonReact Fullstack" |> Utils.text} </title>
         <meta
           name="description"
           content="Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript & OCaml ecosystems."
@@ -13,7 +13,7 @@ let make = _children => {
       </ReactHelmet>
       <section>
         <ContentHeader section="ReasonReact" title="Fullstack Example" />
-        <LazyHello render=(((module Hello)) => <Hello name="404 Page" />) />
+        <Hello name="John Snow" />
       </section>
-    </Fragment>,
+    </>,
 };
