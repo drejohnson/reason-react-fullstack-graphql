@@ -1,16 +1,16 @@
 type fragmentReplacements;
 
+[@bs.deriving abstract]
 type prismaProps = {
-  .
-  "fragmentReplacements": Js.Nullable.t(fragmentReplacements),
-  "typeDefs": Js.Nullable.t(string),
-  "endpoint": Js.Nullable.t(string),
-  "secret": Js.Nullable.t(string),
-  "debug": Js.Nullable.t(Js.boolean),
+  fragmentReplacements: Js.nullable(fragmentReplacements),
+  typeDefs: Js.nullable(string),
+  endpoint: Js.nullable(string),
+  secret: Js.nullable(string),
+  debug: Js.nullable(bool),
 };
 
 [@bs.module "prisma-binding"] [@bs.new]
-external makePrisma : prismaProps => 'a = "Prisma";
+external makePrisma: prismaProps => 'a = "Prisma";
 
 let createPrisma =
     (
@@ -21,12 +21,13 @@ let createPrisma =
       ~debug=?,
       (),
     ) => {
-  let prismaOptions = {
-    "fragmentReplacements": Js.Nullable.fromOption(fragmentReplacements),
-    "typeDefs": Js.Nullable.fromOption(typeDefs),
-    "endpoint": Js.Nullable.fromOption(endpoint),
-    "secret": Js.Nullable.fromOption(secret),
-    "debug": Js.Nullable.fromOption(debug),
-  };
+  let prismaOptions =
+    prismaProps(
+      ~fragmentReplacements=Js.Nullable.fromOption(fragmentReplacements),
+      ~typeDefs=Js.Nullable.fromOption(typeDefs),
+      ~endpoint=Js.Nullable.fromOption(endpoint),
+      ~secret=Js.Nullable.fromOption(secret),
+      ~debug=Js.Nullable.fromOption(debug),
+    );
   makePrisma(prismaOptions);
 };
