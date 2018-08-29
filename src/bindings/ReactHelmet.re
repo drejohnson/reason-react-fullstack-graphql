@@ -1,5 +1,3 @@
-type t;
-
 type base;
 
 type bodyAttributes;
@@ -18,42 +16,54 @@ type style;
 
 type titleAttributes;
 
-[@bs.module "react-helmet"]
-external helmet : ReasonReact.reactClass = "Helmet";
+[@bs.deriving abstract]
+type jsProps = {
+  base: Js.nullable(base),
+  bodyAttributes: Js.nullable(bodyAttributes),
+  defaultTitle: Js.nullable(string),
+  htmlAttributes: Js.nullable(htmlAttributes),
+  link: Js.nullable(array(link)),
+  meta: Js.nullable(array(meta)),
+  noscript: Js.nullable(array(noscript)),
+  script: Js.nullable(array(script)),
+  style: Js.nullable(array(style)),
+  title: Js.nullable(string),
+  titleAttributes: Js.nullable(titleAttributes),
+  titleTemplate: Js.nullable(string),
+};
+
+[@bs.module "react-helmet"] external helmet: ReasonReact.reactClass = "Helmet";
 
 let make =
     (
-      ~base: option(base)=?,
-      ~bodyAttributes: option(bodyAttributes)=?,
-      ~defaultTitle: option(string)=?,
-      ~encodeSpecialCharacters: bool=false,
-      ~htmlAttributes: option(htmlAttributes)=?,
-      ~link: option(array(link))=?,
-      ~meta: option(array(meta))=?,
-      ~noscript: option(array(noscript))=?,
-      ~onChangeClientState: option((~newState: t) => t)=?,
-      ~script: option(array(script))=?,
-      ~style: option(array(style))=?,
-      ~title: option(string)=?,
-      ~titleAttributes: option(titleAttributes)=?,
-      ~titleTemplate: option(string)=?,
+      ~base=?,
+      ~bodyAttributes=?,
+      ~defaultTitle=?,
+      ~htmlAttributes=?,
+      ~link=?,
+      ~meta=?,
+      ~noscript=?,
+      ~script=?,
+      ~style=?,
+      ~title=?,
+      ~titleAttributes=?,
+      ~titleTemplate=?,
       children,
     ) => {
-  let props = {
-    "base": Js.Nullable.fromOption(base),
-    "bodyAttributes": Js.Nullable.fromOption(bodyAttributes),
-    "defaultTitle": Js.Nullable.fromOption(defaultTitle),
-    "encodeSpecialCharacters": encodeSpecialCharacters,
-    "htmlAttributes": Js.Nullable.fromOption(htmlAttributes),
-    "link": Js.Nullable.fromOption(link),
-    "meta": Js.Nullable.fromOption(meta),
-    "noscript": Js.Nullable.fromOption(noscript),
-    "onChangeClientState": Js.Nullable.fromOption(onChangeClientState),
-    "script": Js.Nullable.fromOption(script),
-    "style": Js.Nullable.fromOption(style),
-    "title": Js.Nullable.fromOption(title),
-    "titleAttributes": Js.Nullable.fromOption(titleAttributes),
-    "titleTemplate": Js.Nullable.fromOption(titleTemplate),
-  };
+  let props =
+    jsProps(
+      ~base=base->Js.Nullable.fromOption,
+      ~bodyAttributes=bodyAttributes->Js.Nullable.fromOption,
+      ~defaultTitle=defaultTitle->Js.Nullable.fromOption,
+      ~htmlAttributes=htmlAttributes->Js.Nullable.fromOption,
+      ~link=link->Js.Nullable.fromOption,
+      ~meta=meta->Js.Nullable.fromOption,
+      ~noscript=noscript->Js.Nullable.fromOption,
+      ~script=script->Js.Nullable.fromOption,
+      ~style=style->Js.Nullable.fromOption,
+      ~title=title->Js.Nullable.fromOption,
+      ~titleAttributes=titleAttributes->Js.Nullable.fromOption,
+      ~titleTemplate=titleTemplate->Js.Nullable.fromOption,
+    );
   ReasonReact.wrapJsForReason(~reactClass=helmet, ~props, children);
 };
