@@ -18,6 +18,7 @@
 # misc
 .DS_Store
 .env
+/.graphql_ppx_cache
 
 npm-debug.log*
 yarn-debug.log*
