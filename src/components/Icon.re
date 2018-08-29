@@ -1,20 +1,18 @@
 let styles =
-  Css.(
-    {
-      "icon": [display(inlineBlock), width(rem(1.75)), height(rem(1.75))],
-    }
-  );
+  Css.{
+    "icon": [display(inlineBlock), width(rem(1.75)), height(rem(1.75))],
+  };
 
 let component = ReasonReact.statelessComponent("Icon");
 
 let make = (~name, _children) => {
   ...component,
   render: _self =>
-    <Fragment>
+    <>
       <svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
-        style=(ReactDOMRe.Style.make(~height="0", ()))>
+        style={ReactDOMRe.Style.make(~height="0", ())}>
         <defs>
           <symbol id="icon-menu" viewBox="0 0 24 24">
             <path
@@ -50,8 +48,8 @@ let make = (~name, _children) => {
       </svg>
       <svg
         className=Css.(style(styles##icon))
-        style=(ReactDOMRe.Style.make(~fill="#98999a", ()))>
+        style={ReactDOMRe.Style.make(~fill="#98999a", ())}>
         <use xlinkHref={j|#$name|j} />
       </svg>
-    </Fragment>,
+    </>,
 };

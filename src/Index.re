@@ -1,9 +1,17 @@
 [@bs.module "./registerServiceWorker"]
-external registerServiceWorker : unit => unit = "default";
+external registerServiceWorker: unit => unit = "default";
 
 Css.(
   global("html", [backgroundColor(hex("262728")), minHeight(vh(100.))]),
   global("body", [backgroundColor(hex("262728")), color(hex("aaabac"))]),
+  global(
+    "body",
+    [
+      fontFamily(
+        "Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      ),
+    ],
+  ),
   global("a, a:hover", [color(currentColor), textDecoration(none)]),
   global("a:active, a:hover", [outline(zero, none, transparent)]),
   global("button:focus", [outline(zero, none, transparent)]),
@@ -15,7 +23,7 @@ Css.(
 
 module AppContainer = {
   [@bs.module "react-hot-loader"]
-  external appContainer : ReasonReact.reactClass = "AppContainer";
+  external appContainer: ReasonReact.reactClass = "AppContainer";
   let make = children =>
     ReasonReact.wrapJsForReason(
       ~reactClass=appContainer,
@@ -33,9 +41,9 @@ ReactDOMRe.renderToElementWithId(
 
 registerServiceWorker();
 
-[@bs.val] external hot : bool = "module.hot";
+[@bs.val] external hot: bool = "module.hot";
 
-[@bs.val] external accept : unit => unit = "module.hot.accept";
+[@bs.val] external accept: unit => unit = "module.hot.accept";
 
 if (hot) {
   accept();
