@@ -3,11 +3,11 @@ let component = ReasonReact.statelessComponent("App");
 let make = _children => {
   ...component,
   render: _self =>
-    <Fragment>
+    <>
       <ReactHelmet>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title> ("ReasonReact Fullstack" |> Utils.text) </title>
+        <title> {"ReasonReact Fullstack" |> Utils.text} </title>
         /* Search Engine */
         <meta
           name="description"
@@ -47,16 +47,16 @@ let make = _children => {
         <link rel="shortcut icon" href="/favicon.ico" />
       </ReactHelmet>
       <Layout>
-        <Router.Container>
-          ...(
-               (~currentRoute) =>
-                 switch (currentRoute) {
-                 | Home => <LazyHome />
-                 | About => <LazyAbout />
-                 | _ => <LazyNotFound />
-                 }
-             )
-        </Router.Container>
+        ...<Router.WithRouter>
+             ...{
+                  (~currentRoute) =>
+                    switch (currentRoute) {
+                    | Home => <Home />
+                    | About => <About />
+                    | _ => <NotFound />
+                    }
+                }
+           </Router.WithRouter>
       </Layout>
-    </Fragment>,
+    </>,
 };
