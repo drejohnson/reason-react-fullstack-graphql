@@ -1,5 +1,3 @@
-open Types;
-
 let server =
   GraphqlYoga.createGraphQLServer(
     ~typeDefs="./src/schema.graphql",
